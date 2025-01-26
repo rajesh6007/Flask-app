@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&family=Roboto+Condensed:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Kdam+Thmor+Pro&family=Oswald:wght@200..700&display=swap');
+      body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form_header_section .fa-solid{
+            color: #ffcc00;
+        }
+
+        .form_header_section h1{
+            color: #0066ff;
+            font-size:1.8rem;
+        }
+
+
+        .form_main_container{
+            border: none;
+            margin-left: 50px;
+            width: 1150px;
+            display: flex;
+
+        }
+
+        .main_first_columns{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 250px;
+            padding-top: 70px;           
+        }
+
+        .main_first_columns button{
+            border:none;
+            outline: none;
+            background: transparent;
+            font-family: "Bungee Spice", sans-serif;
+        }
+
+        .main_first_columns img{
+            margin-top: 50px;
+        }
+
+
+
+
+        .main_second_columns{
+            flex-grow: 1;
+            padding: 15px;
+        }
+
+        .main_second_columns .form_submit_container{
+            padding-top: 20px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .main_second_columns .form_submit_container button{
+            padding: 10px 15px 10px 15px;
+            background-color: #0066ff;
+            border: none;
+            outline: none;
+            color: white;
+            font-family: poppins;
+            border-radius: 5px;
+            margin: auto;
+            cursor: pointer;
+        }
+
+        .main_second_columns form{
+            border: 1px solid rgba(0,0,0,.1);
+            border-radius: 20px;
+            padding: 15px;
+        }
+
+        .main_second_columns .rows{
+            display: flex;
+        }
+
+        .form_column{
+            width: 50%;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"]{
+            cursor: pointer;
+        }
+
+        .rows .form_column{
+            padding: 10px 10px 15px 10px;
+        }
+
+        .rows .form_column p{
+            font-family: poppins;
+            font-size: .9rem;
+            color: rgba(0,0,0,.8);
+            padding-left: 5px;
+            padding-bottom: 5px;
+        }
+
+        .rows .form_column label{
+            font-family: poppins;
+            font-size: .8rem;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .rows .form_column input[type="text"],
+        .rows .form_column input[type="textarea"]{
+            width: 90%;
+            height: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-family: poppins;
+            font-size: .79rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,.2) ;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .rows .form_column select,
+        .rows .form_column input[type="date"]{
+            border: 1px solid rgba(0,0,0,.2);
+            padding: 5px 10px 5px 10px;
+            margin-left: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .rows .form_column textarea{
+            height: 60px;
+            border: 1px solid white;
+        }
+
+
+        .rows .form_column input[type="text"]:hover,
+        .rows .form_column select:hover,
+        .rows .form_column textarea:hover,
+        .rows .form_column input[type="date"]:hover{
+            border: 1px solid #0066ff;
+        }
+
+        .rows .form_column input[type="text"]:valid,
+        .rows .form_column input[type="date"]:valid,
+        .rows .form_column select:valid,
+        .rows .form_column textarea:valid{
+            border: 1px solid #00cc00;
+            outline: 1px solid #00cc00;
+        }
+
+        .rows .form_column input[type="file"]:valid{
+            background-color: #00cc00;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .rows .form_column input[type="checkbox"]{
+            cursor: pointer;
+        }
+
+        
+        
+    
