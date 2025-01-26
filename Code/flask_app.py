@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 # Load the trained model
-MODEL_PATH = "forecasting_model.pkl"  # Path to your saved model
+MODEL_PATH = "forecast_model.pkl"  # Path to your saved model
 model = joblib.load(MODEL_PATH)
 
 # Initialize the Flask app
@@ -38,3 +38,5 @@ def predict():
 
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+
+
