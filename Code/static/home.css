@@ -110,6 +110,7 @@
         }
 
         .rows .form_column input[type="text"],
+        .rows .form_column input[type="number"],
         .rows .form_column input[type="textarea"]{
             width: 90%;
             height: 30px;
