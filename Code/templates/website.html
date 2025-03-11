@@ -10,7 +10,7 @@
             let formData = new FormData();
             formData.append("years", years);
 
-            fetch("/forecast", {
+            fetch("/predict", {
                 method: "POST",
                 body: formData
             })

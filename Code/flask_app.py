@@ -20,6 +20,7 @@ def home():
 
 # Route to handle predictions
 @app.route('/predict', methods=['POST'])
+
 def predict():
     try:
         # Parse input data
@@ -40,6 +41,8 @@ def predict():
         #last_known_values_not_used = test_data[columns].iloc[-1]
 
         n_forecast = num_years - test_data['YEAR'].iloc[-1]
+
+        print(last_known_values)
 
         for _ in range(n_forecast):
             # Predict the next value
@@ -73,7 +76,8 @@ def predict():
                         # Store forecast
             future_forecast.append({
                 "YEAR": test_data["YEAR"].max() + len(future_forecast) + 1,
-                "BKT_A": last_known_values['BKT_A'], "BKT_Y": last_known_values['BKT_Y'], 
+                "BKT_A": last_known_values['BKT_A'], 
+                "BKT_Y": last_known_values['BKT_Y'], 
                 "BKT_P": last_known_values['BKT_P']
             })
 
@@ -83,7 +87,7 @@ def predict():
         #prediction = model.predict(input_data)
 
         # Return prediction as JSON
-        return jsonify({"prediction": future_forecast})
+        return jsonify({"Future Forecast": future_forecast})
     
     except Exception as e:
 
