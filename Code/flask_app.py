@@ -8,7 +8,7 @@ import numpy as np
 MODEL_PATH = "model.pkl"  # Path to your saved model
 best_model = joblib.load(MODEL_PATH)
 
-data = pd.read_csv("your_file.csv")
+data = pd.read_csv("Data_read.csv")
 
 # Initialize the Flask app
 app = Flask(__name__)
