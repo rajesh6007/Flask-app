@@ -45,7 +45,7 @@ def predict():
             # Predict the next value
         
             next_pred = best_model.predict([last_known_values])
-            future_forecast.append(next_pred[0])
+            #future_forecast.append(next_pred[0])
 
             # Update lag features
             last_known_values['YEAR'] = last_known_values["YEAR"] + 1
@@ -69,7 +69,13 @@ def predict():
             test_data = pd.concat([test_data, pd.DataFrame([last_known_values])], ignore_index=True)
             test_data['BKT_P'].iloc[-1] = next_pred[0] 
             test_data['is_forecasted'].iloc[-1] = True
-            print(test_data)
+
+                        # Store forecast
+            future_forecast.append({
+                "YEAR": test_data["YEAR"].max() + len(future_forecast) + 1,
+                "BKT_A": last_known_values['BKT_A'], "BKT_Y": last_known_values['BKT_Y'], 
+                "BKT_P": last_known_values['BKT_P']
+            })
 
 
         
@@ -77,8 +83,10 @@ def predict():
         #prediction = model.predict(input_data)
 
         # Return prediction as JSON
-        return jsonify({"prediction": prediction.tolist()})
+        return jsonify({"prediction": future_forecast})
+    
     except Exception as e:
+
         return jsonify({"error": str(e)})
 
 # Main entry point

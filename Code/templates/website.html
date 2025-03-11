@@ -16,9 +16,9 @@
             })
             .then(response => response.json())
             .then(data => {
-                let result = "<h3>Forecasted Sales Data:</h3><table border='1'><tr><th>Year</th><th>Area</th><th>Production</th><th>Price</th><th>Sales</th></tr>";
+                let result = "<h3>Forecasted Sales Data:</h3><table border='1'><tr><th>Year</th><th>BKT_A</th><th>BKT_Y</th><th>BKT_P</th>";
                 data.forEach(row => {
-                    result += `<tr><td>${row.year}</td><td>${row.area.toFixed(2)}</td><td>${row.production.toFixed(2)}</td><td>${row.price.toFixed(2)}</td><td>${row.sales.toFixed(2)}</td></tr>`;
+                    result += `<tr><td>${row.YEAR}</td><td>${row.BKT_A.toFixed(2)}</td><td>${row.BKT_Y.toFixed(2)}</td><td>${row.BKT_P.toFixed(2)}</td></tr>`;
                 });
                 result += "</table>";
                 document.getElementById("result").innerHTML = result;
