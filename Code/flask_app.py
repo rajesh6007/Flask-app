@@ -60,13 +60,13 @@ def predict():
             #test_data['sales_log'].iloc[+1] = next_pred[0]  # Update lag_3 with the predicted value
                 # Update rolling mean and std for exogenous features
             for col in ['sales_log','BKT_A', 'BKT_Y', 'KTM_A', 'KTM_P', 'KTM_Y', 'LLT_A', 'LLT_P', 'LLT_Y']:
-                last_known_values[col] = test_data[col].rolling(6).median().iloc[-1]
+                last_known_values[col] = test_data[col].rolling(3).mean().iloc[-1]
 
 
             # Update rolling mean and std
             rolling_window = np.array([last_known_values['lag_1'], last_known_values['lag_2'], last_known_values['lag_3']])
             last_known_values['rolling_mean_3'] = rolling_window.mean()  # Update rolling_mean_3
-            last_known_values['rolling_mean_3'] = rolling_window.std()   # Update rolling_std_3
+            last_known_values['rolling_std_3'] = rolling_window.std()   # Update rolling_std_3
 
             print(last_known_values)
             test_data = pd.concat([test_data, pd.DataFrame([last_known_values])], ignore_index=True)
@@ -87,7 +87,7 @@ def predict():
         #prediction = model.predict(input_data)
 
         # Return prediction as JSON
-        return jsonify({"Future Forecast": future_forecast})
+        return jsonify({"Future Forecast": next_pred})
     
     except Exception as e:
 
