@@ -1,0 +1,239 @@
+/* Your existing CSS styles */
+.index_model {
+    position: relative;
+    margin-top: -100px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 15% 20px 15%;
+    gap: 25px;
+}
+
+.in_mod_1st_col {
+    height: auto;
+    width: 400px;
+    border-radius: 24px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.in_mod_1st_col:hover .in_mod_1st_col_img1 img {
+    transform: scale(1.2);
+    overflow: hidden;
+    border-radius: 24px 24px 0px 0px;
+}
+
+.in_mod_1st_col_img1 {
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+
+.in_mod_1st_col_img1 img {
+    border-radius: 24px 24px 0px 0px;
+    transition: 1s;
+}
+
+.in_mod_1st_col_img {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s ease-in-out;
+}
+
+.in_mod_1st_col_img img {
+    height: 80px;
+}
+
+.in_mod_1st_col_text {
+    font-family: poppins;
+    padding: 0% 13% 0% 13%;
+    letter-spacing: 1px;
+    font-size: .9rem;
+}
+
+.in_mod_1st_col_button {
+    padding: 40px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.in_mod_1st_col_button a {
+    display: block;
+    padding: 10px 45px 10px 45px;
+    text-decoration: none;
+    font-family: poppins;
+    border-radius: 30px;
+    background-color: #58EB4D;
+    color: white;
+    font-size: 1rem;
+}
+
+.in_mod_2nd_col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.in_mod_2nd_col_1r {
+    display: flex;
+    height: 370px;
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: #fbfcfa;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.in_mod_2nd_col_1r_img {
+    height: inherit;
+    width: 40%;
+    transition: 0.8s;
+    overflow: hidden;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+    border-radius: 5px;
+}
+
+.in_mod_2nd_col_1r_img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: 1s;
+}
+
+.in_mod_2nd_col_1r:hover .in_mod_2nd_col_1r_img img {
+    transform: scale(1.2);
+}
+
+.in_mod_2nd_col_1r_img_text {
+    flex: 1;
+    padding: 20px;
+}
+
+.mod_2nd_col_1r_head_div1 {
+    display: flex;
+    gap: 25px;
+}
+
+.mod_2nd_col_1r_head .mod_2nd_col_1r_head_title{
+    flex:1;
+    display: flex;
+    align-items: center;
+    font-family: noto,sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.mod_2nd_col_1r_head img {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    display: block;
+    animation: rotateTrophy 2s infinite ease-in-out, glowTrophy 1.5s infinite alternate;
+}
+
+.mod_2nd_col_1r_head_div2{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.mod_2nd_col_1r_head_div2 p{
+    padding: 20px;
+    font-family: poppins,sans-serif;
+    font-size: .9rem;
+}
+
+.mod_2nd_col_1r_head_div3{
+    padding:10px 0px 0px 20px ;
+}
+
+.mod_2nd_col_1r_head_div3 a{
+    width: auto;
+    background-color: #58EB4D;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-family: poppins;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding: 10px 45px 10px 45px;
+    cursor: pointer;
+}
+
+
+/* Trophy Glow Animation */
+@keyframes glowTrophy {
+    0% {
+        filter: drop-shadow(0 0 5px gold);
+    }
+    100% {
+        filter: drop-shadow(0 0 20px gold);
+    }
+}
+
+.in_mod_2nd_col_2r{
+    flex: 1;
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.in_mod_2nd_col_2r_c{
+    border-radius: 24px;
+    height: 100%;
+    flex: 1;
+    padding: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+.in_mod_2nd_col_2r_c_r1{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.in_mod_2nd_col_2r_c_icon img{
+    height: 40px;
+    width: 40px;
+}
+
+.in_mod_2nd_col_2r_c_text{
+    font-family: noto, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.in_mod_2nd_col_2r_c_text2{
+    padding:20px 20px 20px 20px;
+    font-family: poppins, sans-serif;
+    font-size: .9rem;
+    font-weight:normal;
+}
+
+.in_mod_2nd_col_2r_c_button{
+    display: flex;
+    justify-content: center;
+}
+
+.in_mod_2nd_col_2r_c_button a{
+    background-color: #58EB4D;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-family: poppins;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding: 10px 45px 10px 45px;
+    cursor: pointer;
+}

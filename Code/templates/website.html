@@ -10,22 +10,42 @@
             let formData = new FormData();
             formData.append("years", years);
 
-            fetch("/predict", {
+            fetch("http://127.0.0.1:5000/predict", {
                 method: "POST",
                 body: formData
             })
-            .then(response => response.json())
+    /*        .then(response => response.json())
             .then(data => {
-                  let result = data
-       /*         let result = "<h3>Forecasted Sales Data:</h3><table border='1'><tr><th>Year</th><th>BKT_A</th><th>BKT_Y</th><th>BKT_P</th>";
+             //   let result = data
+                let result = "<h3>Forecasted Sales Data:</h3><table border='1'><tr><th>Year</th><th>BKT_A</th><th>BKT_Y</th><th>BKT_P</th>";
                 data.forEach(row => {
                     result += `<tr><td>${row.YEAR}</td><td>${row.BKT_A.toFixed(2)}</td><td>${row.BKT_Y.toFixed(2)}</td><td>${row.BKT_P.toFixed(2)}</td></tr>`;
-              }); */ 
+              }); 
                // result += "</table>";
                 document.getElementById("result").innerHTML = result;
-            })
+            })                                                                                                  //Gives output object object
             .catch(error => console.error("Error:", error));
+        }*/
+
+            .then(response => response.json())
+            .then(data => {
+                if (!data || !data["Future Forecast"]) { // Check if key exists
+                    throw new Error("Invalid response from server");
+                }
+                
+                let forecastData = data["Future Forecast"];  /* Fix: Access JSON property */
+                let result = "<h3>Forecasted Sales Data:</h3><table border='1'><tr><th>Year</th><th>BKT_A</th><th>BKT_Y</th><th>BKT_P</th></tr>";
+                forecastData.forEach(row => {
+                    result += `<tr><td>${row.YEAR}</td><td>${row.BKT_A.toFixed(2)}</td><td>${row.BKT_Y.toFixed(2)}</td><td>${row.BKT_P.toFixed(2)}</td></tr>`;
+                });
+                result += "</table>";
+                document.getElementById("result").innerHTML = result;
+            })
+            .catch(error => {
+                document.getElementById("result").innerHTML = "<p style='color: red;'>Error: " + error + "</p>";
+            });
         }
+
     </script>
 </head>
 <body>
