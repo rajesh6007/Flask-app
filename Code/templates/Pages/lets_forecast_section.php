@@ -11,7 +11,7 @@
         }
 
         #lets_forecast_section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../Images/bg2.png'); 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../static/images//Images/bg2.png'); 
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -44,10 +44,10 @@
 <div class="hero bg-base-200 min-h-screen">
     <div class="hero-content flex-col lg:flex-row-reverse">
         <div class="text-center lg:text-left">
-            <h1 class="text-5xl font-bold">Enter the year(s) to forecast</h1>
+            <h1 class="text-5xl font-bold" id="forecast-results">Enter the year(s) to forecast</h1>
         </div>
         <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <form class="card-body" id="forecast-form" action="result.php">
+            <form class="card-body" id="forecast-form" action="forecast_page.php">
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text">Number of Years</span>
@@ -99,7 +99,7 @@
             }
 
             if (data["Future Forecast"]) {
-                let html = '<h3>Forecasted Data:</h3><table border="1"><tr><th>Year</th><th>BKT_A</th><th>BKT_Y</th><th>BKT_P</th></tr>';
+                let html = '<h3>Forecasted Data:</h3><table border="1"><tr><th><p style="color: black;">Year</p></th><th><p style="color: black;">BKT_A</p></th><th><p style="color: black;">BKT_Y</p></th><th><p style="color: black;">BKT_P</p></th></tr>';
                 data["Future Forecast"].forEach(item => {
                     html += `<tr>
                                 <td>${item.YEAR}</td>

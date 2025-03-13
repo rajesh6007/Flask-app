@@ -11,7 +11,7 @@
         }
 
         #lets_forecast_section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../Images/bg2.png'); 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../static/images//Images/bg2.png'); 
             background-size: cover;
             background-repeat: no-repeat;
         }

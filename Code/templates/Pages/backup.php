@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Made original -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -168,77 +167,74 @@ The results are as follows:
         })
         .then(response => response.json())
         .then(data => {
-                if (!data || !data["Get Data"]) {
-                    throw new Error("No data received from server");
-                }
+            if (!data || !data["Get Data"]) {
+                throw new Error("No data received from server");
+            }
+
+            const result1 = document.getElementById('stat-BKT-P');
+            const result2 = document.getElementById('stat-year');
+
+                    // Extract the last item from the array
+
             
-                
-                const result1 = document.getElementById('stat-BKT-P');
-                const result2 = document.getElementById('stat-year');
+            result1.innerHTML = '';
+            result2.innerHTML = '';
 
-                result1.innerHTML = '';
-                result2.innerHTML = '';
+                 // Extract the last item from the data
+            const lastItem = data["Get Data"][data["Get Data"].length - 1];
+            const lastYear = lastItem.YEAR;
+            const lastPaddyProd = lastItem.BKT_P;
 
-                // Extract the last item from the data
-                const lastItem = data["Get Data"][data["Get Data"].length - 1];
-                const lastYear = lastItem.YEAR;
-                const lastPaddyProd = lastItem.BKT_P;
+            // Extract the data for the chart
+         //   const years = data["Get Data"].map(item => item.YEAR);
+         //   const paddyProd = data["Get Data"].map(item => item.BKT_P);
 
-                // Extract the data for the chart (Ensure they are arrays)
-                const years = data["Get Data"].map(item => item.YEAR);
-                const paddyProd = data["Get Data"].map(item => item.BKT_P);
+            const years = data["Get Data"].map(item => item.YEAR).toString().split(',').join(', ');
+            const paddyProd = data["Get Data"].map(item => item.BKT_P).toString().split(',').join(', ');
+             
+            console.log(years)
+            console.log(paddyProd)
 
-                console.log(years); // Check console for correct output
-                console.log(paddyProd);
+            // Update the chart     
+            const ctx = document.getElementById('myChart');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: 'Paddy Production',
+                        data: paddyProd,
+                        borderWidth: 1
+                    }]  
+                },
 
-                // Get the chart canvas
-                const ctx = document.getElementById('myChart').getContext('2d');
-
-                // Destroy any previous Chart instance before creating a new one
-                if (window.myChart instanceof Chart) {
-                    window.myChart.destroy();
-                }
-
-                // Create a new chart instance
-                window.myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: years,
-                           datasets: [{
-                            label: 'Paddy Production',
-                            data: paddyProd,
-                            borderWidth: 2,
-                            borderColor: 'blue',
-                            backgroundColor: 'rgba(0, 0, 255, 0.2)',
-                            fill: true
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            x: {
-                                title: {
-                                    display: true,
-                                    text: 'Year'
-                                }
-                            },
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Paddy Production'
-                                }
+                options: {
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Year'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Paddy Production'
                             }
                         }
                     }
-                });
+                }
+            });
 
-                // Update the stats with the last values
-                result1.innerHTML = 19922;  // Last BKT_P
-                result2.innerHTML = 2022;  // Last Year
+                    
+            // Update the stats with the last values
+            
+            result1.innerHTML = years[years.length - 1];  // Last BKT_P
+            result2.innerHTML = paddyProd[paddyProd.length - 1];  // Last Year
 
-    })
-
+        })
         .catch(error => {
             console.error('Error:', error);
             alert('An error occurred while fetching forecast data.');

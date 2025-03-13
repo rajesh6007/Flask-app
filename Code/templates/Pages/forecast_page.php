@@ -12,7 +12,7 @@
 </head>
 <body>
     <?php include 'header.php'?>
-    <?php include 'forecast_section.php'?>
+    <?php include 'forecast_section_1.php'?>
     <?php include 'footer.php'?>   
 </body>
 </html>

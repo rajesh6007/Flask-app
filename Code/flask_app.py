@@ -151,7 +151,8 @@ def getdata() :
         })
 
       
-        response_data = {"Get Data": send_data}
+        # response_data = {"Get Data": send_data} # original by rajesh
+        response_data = {"Get_Data": send_data} # Edited by sushan third party
         return jsonify(response_data)
         
     except Exception as e:

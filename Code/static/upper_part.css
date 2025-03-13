@@ -1,7 +1,7 @@
 .upper_part{
     position: relative;
     border: 1px solid green;
-    background-image: linear-gradient(rgba( 0, 0, 0, 0.3),rgba( 0, 0, 0, 0.3),rgba( 0, 0, 0, 0.3)), url('../Images/bg_image.jpeg'); 
+    background-image: linear-gradient(rgba( 0, 0, 0, 0.3),rgba( 0, 0, 0, 0.3),rgba( 0, 0, 0, 0.3)), url('images/Images/bg_image.jpeg'); 
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
