@@ -75,7 +75,7 @@
             return;
         }
 
-        fetch('predict', {
+        fetch('/predict', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
