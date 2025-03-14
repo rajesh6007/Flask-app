@@ -158,7 +158,7 @@ The results are as follows:
 <script>
     // Fetch forecast data
     function getForecast() {
-        fetch('http://localhost:8000/getdata', {
+        fetch('getdata', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
