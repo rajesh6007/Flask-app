@@ -11,8 +11,12 @@ best_model = joblib.load(MODEL_PATH)
 
 
 
+# Declare global variable
+data = pd.read_csv("Data_read.csv")  # Read CSV file into global variable
+
 # Initialize the Flask app
 app = Flask(__name__)
+
 CORS(app)               # Enables cross-origin requests
 #CORS(app)  # Enable CORS to allow requests from different origins
 
@@ -23,17 +27,18 @@ CORS(app)               # Enables cross-origin requests
 
 #templates/Pages/index.php
 
-
 # Route to handle predictions
 @app.route('/predict', methods=['POST'])
 
  #model = best_model()
 
 def predict():
+    global data  # Declare data as global to access the global variable
+
     try:
 
-   
-        data = pd.read_csv("Data_read.csv")
+#Use data as a global variable and define it outside of predict and getdata 
+#function and access updated data in getdata function which is then send to php
         # Parse input data
         test_data = data.iloc[-11:].copy()  # Use the last 3 rows for initialization
 
@@ -65,10 +70,12 @@ def predict():
         
             next_pred = best_model.predict([last_known_values])
             #future_forecast.append(next_pred[0])
-            if _ >= 3 :
-                next_pred = next_pred - (next_pred*(_+0.2)/10)
+            if _ > 3 :
+                next_pred = next_pred + (next_pred*(_+0.2)/100)
+            elif _ == 1:
+                next_pred = next_pred
             else:
-                next_pred = next_pred - (next_pred*(_+1)/10)
+                next_pred = next_pred - (next_pred*(_+0.5)/100)
 
 
             print(next_pred)
@@ -88,11 +95,11 @@ def predict():
             for col in ['BKT_A', 'BKT_Y']:
                 last_known_values[col] = test_data[col].rolling(8).mean().iloc[-1]
                 if _==1:
-                    last_known_values[col] = last_known_values[col] - (last_known_values[col]*(_+1.5)/10)
-                elif _ >= 3:
-                    last_known_values[col] = last_known_values[col] - (last_known_values[col]*(_+0.2)/10)
+                    last_known_values[col] = last_known_values[col]
+                elif _ > 3:
+                    last_known_values[col] = last_known_values[col] + (last_known_values[col]*(_+0.2)/100)
                 else :
-                    last_known_values[col] = last_known_values[col] - (last_known_values[col]*(_)/10)
+                    last_known_values[col] = last_known_values[col] - (last_known_values[col]*(_+0.5)/100)
 
             for col in ['KTM_P', 'LLT_P']:
                 last_known_values[col] = test_data[col].rolling(8).mean().iloc[-1]
@@ -107,6 +114,7 @@ def predict():
             test_data = pd.concat([test_data, pd.DataFrame([last_known_values])], ignore_index=True)
             test_data['BKT_P'].iloc[-1] = next_pred[0] 
             data = pd.concat([data, pd.DataFrame([last_known_values])], ignore_index=True)
+            data.loc[data.index[-1],'BKT_P'] = next_pred[0]
            # test_data['is_forecasted'].iloc[-1] = True
 
                         # Store forecast
@@ -136,24 +144,19 @@ def predict():
 
 
 def getdata() :
+    global data
     try:
         
-        data = pd.read_csv("Data_read.csv")
        
+              # Use the global variable 'data'
         columns = ['YEAR', 'BKT_P']
         df = data[columns].copy()
-       # df = pd.DataFrame([df])
-    
-        send_data = []
-        send_data.append({
-            "YEAR": df['YEAR'].tolist(),
-            "BKT_P": df['BKT_P'].tolist()
-        })
+        send_data = [{"YEAR": df['YEAR'].tolist(), "BKT_P": df['BKT_P'].tolist()}]
+        response_data = {"Get_Data": send_data}
+        print(data)
 
-      
-        # response_data = {"Get Data": send_data} # original by rajesh
-        response_data = {"Get_Data": send_data} # Edited by sushan third party
         return jsonify(response_data)
+
         
     except Exception as e:
         print("Error:", str(e))
