@@ -161,7 +161,7 @@
     <script>
         // Fetch forecast data
         function getForecast() {
-            fetch("/getdata",
+            fetch("https://flask-app-ch4c.onrender.com/getdata",
                 {
                     method: "POST",
                     body: JSON

@@ -75,7 +75,7 @@
             return;
         }
 
-        fetch('/predict', {
+        fetch('https://flask-app-ch4c.onrender.com/predict', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
