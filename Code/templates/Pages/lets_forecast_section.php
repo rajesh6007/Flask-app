@@ -78,9 +78,9 @@
         fetch('https://flask-app-ch4c.onrender.com/predict', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ years: years })
+                        "Content-type": "application/json",
+                    },
+            body: JSON.stringify({ years: years }),
         })
         .then(response => response.json())
         .then(data => {
