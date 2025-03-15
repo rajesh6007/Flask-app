@@ -24,7 +24,7 @@ def get_data():
         g.data = pd.read_csv(os.path.join(os.getcwd(), "Data_read.csv"))  
     return g.data
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['GET'])
 def predict():
     data = get_data()
 
