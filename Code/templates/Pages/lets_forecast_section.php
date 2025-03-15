@@ -75,13 +75,20 @@
             return;
         }
 
-        fetch('https://flask-app-ch4c.onrender.com/predict', {
-            method: 'POST',
-            headers: {
+        fetch("https://flask-app-ch4c.onrender.com/predict",
+                {
+                    method: "POST",
+                    body: JSON
+                        .stringify
+                        ({
+                            years: years
+                        }),
+                    headers: {
                         "Content-type": "application/json",
                     },
-            body: JSON.stringify({ years: years }),
-        })
+                })
+
+
         .then(response => response.json())
         .then(data => {
 
