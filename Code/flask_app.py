@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 import numpy as np
 from flask_cors import CORS
-from waitress import serve
+#from waitress import serve
 
 # Load the trained model
 MODEL_PATH = os.path.join(os.getcwd(), "model.pkl")
