@@ -13,6 +13,11 @@ best_model = joblib.load(MODEL_PATH)
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def home():
+    return "Your Flask API is running perfectly!"
+
+
 # Function to load data only once
 def get_data():
     if 'data' not in g:
